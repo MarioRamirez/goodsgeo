@@ -1,1 +1,4 @@
-%h1 Este es el título para el products#index
+%h1 product#index
+
+- @product.each do |product|
+	%h2= link_to product.name, product

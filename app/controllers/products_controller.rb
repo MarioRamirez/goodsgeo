@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 	before_action :find_product, only: [:show, :edit, :update, :destroy]
+	
 	def index
+		@product = Product.all.order("created_at DESC")
 	end
 
 	def show
@@ -12,15 +14,28 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
+
+		if @product.save
+			redirect_to @product, notice: "Product created successfully."
+		else
+			render 'new'
+		end
 	end
 
 	def edit
 	end
 
 	def update
+		if @product.update(product_params)
+			redirect_to @product
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		@product.destroy
+		redirect_to root_path, notice: "Product deleted successfully."
 	end
 
 	private

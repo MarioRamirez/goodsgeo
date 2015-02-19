@@ -11,3 +11,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore images
+/public/system/products/images
+
+# Ignore RVM files
+.ruby-gemset
+.ruby-version
