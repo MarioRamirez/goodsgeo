@@ -10,6 +10,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'devise', '~> 3.4.1'
+gem 'cancancan', '~> 1.10.1'
+gem 'rolify', '~> 4.0.0'
+
+gem 'haml', '~> 4.0.6'
+gem 'simple_form', '~> 3.1.0'
+
 group :production do
 	gem 'rails_12factor', '~> 0.0.3'
 	gem 'unicorn', '~> 4.8.3'
