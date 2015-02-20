@@ -1,7 +1,10 @@
-%h1 New Product
+%center
+	%h1 New Product
 
 = render 'form'
 
 %br/
-
-= link_to "Back", root_path, class: "btn btn-default"
+.container
+	.row
+		.col-md-6.col-md-offset-3
+			= link_to "Back", root_path, class: "btn btn-default pull-right"

@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
 	def update
 		if @product.update(product_params)
-			redirect_to @product
+			redirect_to @product, notice: "Product updated successfully."
 		else
 			render 'edit'
 		end
