@@ -25,10 +25,13 @@
 				.col-md-9
 					%h2 Companies
 				.col-md-3
-					-unless current_user.following?(@product)
-						= link_to "Add Company", follow_product_path, class: "btn btn-default pull-right"
+					-if current_user
+						-unless current_user.following?(@product)
+							= link_to "Add Company", follow_product_path, class: "btn btn-default pull-right"
+						-else
+							= link_to "Remove Company", unfollow_product_path, class: "btn btn-default pull-right"
 					-else
-						= link_to "Remove Company", unfollow_product_path, class: "btn btn-default pull-right"
+						= link_to "Add Company", new_user_session_path, class: "btn btn-default pull-right"
 			.clearfix
 			%table
 				%tr.row.page-header
