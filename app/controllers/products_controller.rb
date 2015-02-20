@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:name, :place, :description, :image)
+		params.require(:product).permit(:name, :place, :latitude, :longitude, :description, :image)
 	end
 
 	def find_product
