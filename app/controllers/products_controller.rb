@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 	before_action :find_product, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, except: [:index, :show]
 	
 	def index
 		@product = Product.all.order("created_at DESC")
@@ -9,11 +10,11 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		@product = Product.new
+		@product = current_user.products.build
 	end
 
 	def create
-		@product = Product.new(product_params)
+		@product = current_user.products.build(product_params)
 
 		if @product.save
 			redirect_to @product, notice: "Product created successfully."
