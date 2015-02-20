@@ -23,6 +23,8 @@ gem 'paperclip', '~> 4.2.1'
 gem 'geocoder', '~> 1.2.7'
 gem 'gmaps4rails', '~> 2.1.2'
 
+gem 'acts_as_follower', '~> 0.2.1'
+
 group :production do
 	gem 'rails_12factor', '~> 0.0.3'
 	gem 'unicorn', '~> 4.8.3'

@@ -14,7 +14,7 @@ if ((product.latitude == null) || (product.longitude == null) ) {    // validati
           "width":  32,
           "height": 37
         },
-        "infowindow": "<b>" + product.name + "</b> de " + product.place
+        "infowindow": "<b>" + product.name + "</b> from " + product.place
       }
     ]);
     handler.bounds.extendWith(markers);

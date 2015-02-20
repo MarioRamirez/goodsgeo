@@ -8,6 +8,9 @@
 				= " from " 
 				= @product.place
 			%p.description= @product.description
+			-if @product.user == current_user
+				= link_to "Edit", edit_product_path, class: "btn btn-default pull-right"
+				= link_to "Delete", product_path, method: :delete, class: "btn btn-default pull-right"
 		.col-md-3
 			#map{:style => "width: 262.500px; height: 262.500px;"}
 			:javascript
@@ -16,8 +19,27 @@
 					gmap_show(product);    // init show map for company card (only print marker)
 				});
 	.row
-		.col-md-12
-			= link_to "Back", root_path, class: "btn btn-default"
-			-if @product.user == current_user
-				= link_to "Edit", edit_product_path, class: "btn btn-default"
-				= link_to "Delete", product_path, method: :delete, class: "btn btn-default"
+	- if @product.followers
+		#company_info.col-md-12
+			.row
+				.col-md-9
+					%h2 Companies
+				.col-md-3
+					-unless current_user.following?(@product)
+						= link_to "Add Company", follow_product_path, class: "btn btn-default pull-right"
+					-else
+						= link_to "Remove Company", unfollow_product_path, class: "btn btn-default pull-right"
+			.clearfix
+			%table
+				%tr.row
+					%th.col-md-3 Name
+					%th.col-md-3 Website
+					%th.col-md-3 Email
+					%th.col-md-3 Phone
+				- @product.followers.each do |user|
+					%tr.clearfix
+						%td.col-md-3= user.company.name
+						%td.col-md-3= user.company.website
+						%td.col-md-3= user.company.email
+						%td.col-md-3= user.company.phone
+			/ = link_to "Back", root_path, class: "btn btn-default"

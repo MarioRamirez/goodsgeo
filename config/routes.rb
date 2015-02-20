@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :products
+  resources :products do
+  	member do
+  		get :follow
+  		get :unfollow
+  	end
+  end
 
   root to: 'products#index'
 	
