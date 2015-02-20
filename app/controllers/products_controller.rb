@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 	before_action :find_product, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
-	before_action :authenticate_user!, except: [:index, :show]
+	before_action :authenticate_user!, except: [:index, :show, :search]
 
 	def index
 		@product = Product.all.order("created_at DESC")
@@ -48,8 +48,9 @@ class ProductsController < ApplicationController
 
 	def follow
 	  @user = current_user
-
-	  if current_user
+	  if @user.company.nil? || @user.company.name.nil? || @user.company.address.nil? || @user.company.website.nil? || @user.company.email.nil? || @user.company.phone.nil?
+	  	redirect_to edit_company_path, notice: "Please complete your company profile."
+	  elsif current_user
       current_user.follow(@product)
       redirect_to @product, notice: "Your company was added to #{@product.name} from #{@product.place}."
 	  else
