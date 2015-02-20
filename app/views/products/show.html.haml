@@ -1,38 +1,23 @@
 .main-content
 	#product_top.row
-		.col-md-4
+		.col-md-3
 			= image_tag @product.image.url(:medium), class: "product_image"
-		.col-md-8
-			#product_info
-				%h1
-					= @product.name
-					= " from " 
-					= @product.place
-				%p.description= @product.description
-				%p
-					Latitude:
-					=@product.latitude
-				%p
-					Longitude:
-					=@product.longitude
-
+		#product_info.col-md-6
+			%h1
+				= @product.name
+				= " from " 
+				= @product.place
+			%p.description= @product.description
+		.col-md-3
+			#map{:style => "width: 262.500px; height: 262.500px;"}
+			:javascript
+				$(document).ready(function(){
+					var product = #{@product.to_json}    // pass ruby variable to javascript
+					gmap_show(product);    // init show map for company card (only print marker)
+				});
 	.row
 		.col-md-12
 			= link_to "Back", root_path, class: "btn btn-default"
 			-if @product.user == current_user
 				= link_to "Edit", edit_product_path, class: "btn btn-default"
 				= link_to "Delete", product_path, method: :delete, class: "btn btn-default"
-	.row
-		.col-md-12
-			%p
-				lat:
-				=@product.latitude
-			%p
-				long:
-				=@product.longitude
-			#map{:style => "width: 550px; height: 350px;"}
-			:javascript
-				$(document).ready(function(){
-					var product = #{@product.to_json}    // pass ruby variable to javascript
-					gmap_show(product);    // init show map for company card (only print marker)
-				});
