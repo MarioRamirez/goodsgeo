@@ -6,4 +6,5 @@
 					.image_wrapper	
 						= link_to product do
 							= image_tag product.image.url(:medium)
-					%h2= link_to product.name, product
+					%h2
+						= link_to product.name + " from " + product.place, product
