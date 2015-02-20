@@ -20,6 +20,8 @@ gem 'bootstrap-sass', '~> 3.3.3'
 
 gem 'paperclip', '~> 4.2.1'
 
+gem 'geocoder', '~> 1.2.7'
+
 group :production do
 	gem 'rails_12factor', '~> 0.0.3'
 	gem 'unicorn', '~> 4.8.3'

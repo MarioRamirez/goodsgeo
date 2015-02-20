@@ -9,7 +9,12 @@
 					= " from " 
 					= @product.place
 				%p.description= @product.description
-
+				%p
+					Latitude:
+					=@product.latitude
+				%p
+					Longitude:
+					=@product.longitude
 	.row
 		.col-md-12
 			= link_to "Back", root_path, class: "btn btn-default"
