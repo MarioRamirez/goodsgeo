@@ -1,0 +1,10 @@
+@products.each_slice(4) do |products|
+	.row
+		- products.each do |product|
+			.col-md-3
+				.product
+					.image_wrapper	
+						= link_to product, {"data-no-turbolink" => "true"} do
+							= image_tag product.image.url(:medium)
+					%h2
+						= link_to product.name + " from " + product.place, product, {"data-no-turbolink" => "true"}

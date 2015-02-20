@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+	searchkick
+
 	geocoded_by :place
 	after_validation :geocode
 

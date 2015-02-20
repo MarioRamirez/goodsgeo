@@ -38,6 +38,14 @@ class ProductsController < ApplicationController
 		redirect_to root_path, notice: "Product deleted successfully."
 	end
 
+	def search
+		if params[:search].present?
+			@products = Product.search(params[:search])
+		else
+			@products = Product.all
+		end
+	end
+
 	def follow
 	  @user = current_user
 
