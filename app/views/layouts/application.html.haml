@@ -16,6 +16,7 @@
 			- if user_signed_in?
 				%ul.nav.navbar-nav.navbar-right
 					%li= link_to "New Product", new_product_path
+					%li= link_to "My Company", edit_company_path
 					%li= link_to "Log out", destroy_user_session_path, :method => :delete
 			- else
 				%ul.nav.navbar-nav.navbar-right
