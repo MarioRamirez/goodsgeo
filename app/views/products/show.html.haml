@@ -1,7 +1,14 @@
-= image_tag @product.image.url(:medium, class: "recipe_image")
-%h1= @product.name
-%p= @product.description
+.main-content
+	#product_top.row
+		.col-md-4
+			= image_tag @product.image.url(:medium), class: "product_image"
+		.col-md-8
+			#product_info
+				%h1= @product.name
+				%p.description= @product.description
 
-= link_to "Back", root_path, class: "btn btn-default"
-= link_to "Edit", edit_product_path, class: "btn btn-default"
-= link_to "Delete", product_path, method: :delete, class: "btn btn-default"
+	.row
+		.col-md-12
+			= link_to "Back", root_path, class: "btn btn-default"
+			= link_to "Edit", edit_product_path, class: "btn btn-default"
+			= link_to "Delete", product_path, method: :delete, class: "btn btn-default"
