@@ -6,8 +6,8 @@ class CompanyController < ApplicationController
   def check_data
     @user = current_user
     if @user.company.nil?
-  		@user.company = Company.new
-  	end
+      @user.company = Company.new
+    end
   end
 
   def edit
@@ -29,7 +29,7 @@ class CompanyController < ApplicationController
   private
 
   def company_params
-		params.require(:company).permit(:name, :description, :address, :website, :email, :phone)
-	end
+    params.require(:company).permit(:name, :description, :address, :website, :email, :phone)
+  end
 
 end

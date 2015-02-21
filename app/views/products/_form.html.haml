@@ -6,7 +6,7 @@
 					#errors
 						%p
 							= @product.errors.count
-							Prevented this product from saving
+							Prevented this product from saving.
 						%ul
 							- @product.errors.full_messages do |msg|
 								%li= msg
