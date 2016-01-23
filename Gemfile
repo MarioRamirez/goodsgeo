@@ -43,5 +43,3 @@ group :development do
   gem 'pry-rails'
   gem 'rails_best_practices', '~> 1.15.6'
 end
-
-ruby "2.2.0"
